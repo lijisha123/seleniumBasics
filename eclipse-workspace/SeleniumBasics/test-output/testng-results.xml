@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="18" total="19" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-03-06T19:04:57 GST" name="Default suite" finished-at="2023-03-06T19:05:02 GST" duration-ms="4665">
+    <groups>
+    </groups>
+    <test started-at="2023-03-06T19:04:57 GST" name="Default test" finished-at="2023-03-06T19:05:02 GST" duration-ms="4665">
+      <class name="BasicCommands.SeleniumCommands">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:BasicCommands.SeleniumCommands@26e356f0]" started-at="2023-03-06T19:04:57 GST" name="setUp" finished-at="2023-03-06T19:05:00 GST" duration-ms="2170" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="TC018_verifyIsenabled()[pri:0, instance:BasicCommands.SeleniumCommands@26e356f0]" started-at="2023-03-06T19:05:00 GST" name="TC018_verifyIsenabled" finished-at="2023-03-06T19:05:02 GST" duration-ms="2263" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC018_verifyIsenabled -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:BasicCommands.SeleniumCommands@26e356f0]" started-at="2023-03-06T19:05:02 GST" name="tearDown" finished-at="2023-03-06T19:05:02 GST" duration-ms="191" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- BasicCommands.SeleniumCommands -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
