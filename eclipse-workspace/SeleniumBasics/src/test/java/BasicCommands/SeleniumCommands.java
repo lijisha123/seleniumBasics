@@ -1,9 +1,12 @@
 package BasicCommands;
 
 import java.sql.Driver;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.asynchttpclient.util.StringBuilderPool;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.By.ByCssSelector;
 import org.openqa.selenium.Dimension;
@@ -189,14 +192,15 @@ public class SeleniumCommands {
 		String ExpectedTextresult = "Thank you for registering. You may now sign-in using the user name and password you've just entered.";
 		System.out.println("actualText");
 		Assert.assertEquals(ExpectedTextresult, actualText, "Invalid text found");
-       }
+	}
 
 	@Test
 	public void TC006_verifyEmptyfieldValidation() {
 		driver.get("https://selenium.obsqurazone.com/form-submit.php");
 		WebElement submitbutton = driver.findElement(By.xpath("//button[@class='btn btn-primary']"));
 		submitbutton.click();
-		WebElement firstnamefieldvalidation = driver.findElement(By.xpath("//input[@id='validationCustom01']//following-sibling::div[1]"));
+		WebElement firstnamefieldvalidation = driver
+				.findElement(By.xpath("//input[@id='validationCustom01']//following-sibling::div[1]"));
 		WebElement lastnamefieldvalidation = driver
 				.findElement(By.xpath("//input[@id='validationCustom02']//following-sibling::div[1]"));
 		WebElement usernamefieldvalidation = driver.findElement(By
@@ -240,7 +244,7 @@ public class SeleniumCommands {
 		Assert.assertEquals(ExpectedzipcodeText, actualzipcodeText, "Invalid text found");
 		System.out.println("actualcheckboxText");
 		Assert.assertEquals(ExpectedcheckboxText, actualcheckboxText, "Invalid text found");
-		}
+	}
 
 	@Test
 
@@ -263,8 +267,10 @@ public class SeleniumCommands {
 		WebElement submitbutton = driver.findElement(By.xpath("//button[@class='btn btn-primary']"));
 		submitbutton.click();
 
-		WebElement statenamefieldvaliadation = driver.findElement(By.xpath("//input[@id='validationCustom04']/following-sibling::div[@class='invalid-feedback']"));
-		WebElement zipcodefieldvaliadation = driver.findElement(By.xpath("//input[@id='validationCustom05']/following-sibling::div[@class='invalid-feedback']"));
+		WebElement statenamefieldvaliadation = driver.findElement(
+				By.xpath("//input[@id='validationCustom04']/following-sibling::div[@class='invalid-feedback']"));
+		WebElement zipcodefieldvaliadation = driver.findElement(
+				By.xpath("//input[@id='validationCustom05']/following-sibling::div[@class='invalid-feedback']"));
 
 		String actualStatenamemessage = statenamefieldvaliadation.getText();
 		String actualZipmessage = zipcodefieldvaliadation.getText();
@@ -421,25 +427,114 @@ public class SeleniumCommands {
 		System.out.println("status-----" + statusAfterclick);
 		Assert.assertTrue(statusAfterclick, "check box is not selected");
 	}
+
 	@Test
-	public void TC018_verifyIsenabled()
-	{
+	public void TC018_verifyIsenabled() {
 		driver.get("https://selenium.obsqurazone.com/ajax-form-submit.php");
-		WebElement submitButton=driver.findElement(By.xpath("//input[@class='btn btn-primary']"));
-		boolean status=submitButton.isEnabled();
-		System.out.println("status-----" +status);
+		WebElement submitButton = driver.findElement(By.xpath("//input[@class='btn btn-primary']"));
+		boolean status = submitButton.isEnabled();
+		System.out.println("status-----" + status);
 		Assert.assertTrue(status, "submit button is not enabled");
-		Point point=submitButton.getLocation(); // to get location of an element
-		System.out.println(point.x +","+ point.y);
-		Dimension dim=submitButton.getSize();
-		System.out.println(dim.height +","+ dim.width);
-		String backGroundcolor=submitButton.getCssValue("background-color");
+		Point point = submitButton.getLocation(); // to get location of an element
+		System.out.println(point.x + "," + point.y);
+		Dimension dim = submitButton.getSize();
+		System.out.println(dim.height + "," + dim.width);
+		String backGroundcolor = submitButton.getCssValue("background-color");
 		System.out.println(backGroundcolor);
-		WebElement inputElement=driver.findElement(By.tagName("input"));
+		WebElement inputElement = driver.findElement(By.tagName("input"));
 		System.out.println(inputElement);
-		List<WebElement>elements=driver.findElements(By.tagName("input"));
+		List<WebElement> elements = driver.findElements(By.tagName("input"));
 		System.out.println(elements);
 		submitButton.submit();
 	}
-	
+
+	@Test
+	public void TC019_verifyTheMessageDisplayedInNewTab() {
+		driver.get("https://demoqa.com/browser-windows");
+		WebElement newTabbutton = driver.findElement(By.xpath("//button[@id='tabButton']"));
+		boolean newTabbuttonStaus = newTabbutton.isEnabled();
+		Assert.assertTrue(newTabbuttonStaus, "button is not enabled");
+		newTabbutton.click();
+		driver.navigate().to("https://demoqa.com/sample");
+		WebElement samplePage = driver.findElement(By.xpath("//h1[@id='sampleHeading']"));// child window
+		String actualMessage = samplePage.getText();
+		String expectedMessage = "This is a sample page";
+		Assert.assertEquals(actualMessage, expectedMessage, "Invalid message found");
+	}
+
+	@Test
+	public void TC020_verifyTheMessageDisplayedInNewWindow() {
+		driver.get("https://demoqa.com/browser-windows");
+		String parentWindow = driver.getWindowHandle();
+		System.out.println("Parent window ID=" + parentWindow);
+		WebElement newWindowbutton = driver.findElement(By.xpath("//button[@id='windowButton']"));
+		newWindowbutton.click();
+		Set<String> handles = driver.getWindowHandles();
+		System.out.println("window handles=" + handles);
+		Iterator<String> handleIDs = handles.iterator();
+		while (handleIDs.hasNext()) {
+			String childWindow = handleIDs.next();
+			if (!childWindow.equals(parentWindow)) {
+				driver.switchTo().window(childWindow);
+				WebElement sampleHeading = driver.findElement(By.xpath("//h1[@id='sampleHeading']"));
+				String actalMessage = sampleHeading.getText();
+				String expectedMessage = "This is a sample page";
+				Assert.assertEquals(actalMessage, expectedMessage, "Invalid message found");
+				driver.close();
+			}
+		}
+		driver.switchTo().window(parentWindow);
+	}
+
+	@Test
+	public void TC021_verifySimplealert() {
+		driver.get("https://selenium.obsqurazone.com/javascript-alert.php");
+		WebElement clickMebutton = driver.findElement(By.xpath("//button[@class='btn btn-success']"));
+		clickMebutton.click();
+		Alert alert = driver.switchTo().alert();
+		String alertText = alert.getText();
+		System.out.println(alertText);
+		alert.accept();
+	}
+
+	@Test
+	public void TC022_verifyConfirmalert() {
+		driver.get("https://selenium.obsqurazone.com/javascript-alert.php");
+		WebElement clickMebutton = driver.findElement(By.xpath("//button[@class='btn btn-warning']"));
+		clickMebutton.click();
+		Alert alert = driver.switchTo().alert();
+		String alertText = alert.getText();
+		System.out.println(alertText);
+		alert.dismiss();
+	}
+
+	@Test
+	public void TC023_verifyPromptalert() throws InterruptedException {
+		driver.get("https://selenium.obsqurazone.com/javascript-alert.php");
+		WebElement clickForpromptButton = driver.findElement(By.xpath("//button[@class='btn btn-danger']"));
+		clickForpromptButton.click();
+		Thread.sleep(2000);
+		Alert alert = driver.switchTo().alert();
+		String alertText = alert.getText();
+		System.out.println(alertText);
+		alert.sendKeys("Testing");
+		alert.accept();
+	}
+
+	@Test
+	public void TC023_verifyTextinAframe() {
+		driver.get("https://demoqa.com/frames");
+		List<WebElement> frames = driver.findElements(By.tagName("iframe"));
+		 int noOFframes=frames.size();//using index
+		 System.out.println(noOFframes);
+	    //driver.switchTo().frame(7);
+		driver.switchTo().frame("frame1");// using id
+		//WebElement frame = driver.findElement(By.id("frame1"));
+		//driver.switchTo().frame("frame1");
+		WebElement heading = driver.findElement(By.id("sampleHeading"));
+		String headingText = heading.getText();
+		System.out.println(headingText);
+		// driver.switchTo().parentFrame();
+		driver.switchTo().defaultContent();
+		}
 }
