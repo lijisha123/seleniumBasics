@@ -5,8 +5,8 @@
     <classes>
       <class name="BasicCommands.SeleniumCommands">
         <methods>
+          <include name="TC_001_verifyObsquraTitle"/>
           <include name="setUp"/>
-          <include name="TC020_verifyTheMessageDisplayedInNewWindow"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- BasicCommands.SeleniumCommands -->
