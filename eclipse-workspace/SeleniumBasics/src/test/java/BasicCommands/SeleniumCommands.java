@@ -1,6 +1,7 @@
 package BasicCommands;
 
 import java.sql.Driver;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -10,6 +11,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.By.ByCssSelector;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,6 +21,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -28,14 +31,18 @@ import org.testng.internal.Systematiser;
 
 import com.google.thirdparty.publicsuffix.PublicSuffixPatterns;
 
+import net.bytebuddy.asm.Advice.Argument;
+
 public class SeleniumCommands {
 	private static final By By = null;
 	public WebDriver driver;
 
 	public void testInitialise(String browser) {
 		if (browser.equals("chrome")) {
-			driver = new ChromeDriver();
-			} else if (browser.equals("firefox")) {
+			ChromeOptions ops = new ChromeOptions();
+			ops.addArguments("--remote-allow-origins=*");
+			driver = new ChromeDriver(ops);
+		} else if (browser.equals("firefox")) {
 			driver = new FirefoxDriver();
 		} else if (browser.equals("edge")) {
 			driver = new EdgeDriver();
@@ -53,13 +60,13 @@ public class SeleniumCommands {
 	@BeforeMethod
 
 	public void setUp() {
-		testInitialise("firefox");
+		testInitialise("chrome");
 	}
 
 	@AfterMethod
 	public void tearDown() {
 		// driver.close();
-		driver.quit();
+		// driver.quit();
 	}
 
 	@Test
@@ -138,7 +145,8 @@ public class SeleniumCommands {
 		passwordField1.sendKeys("111111");
 		// WebElement
 		// loginButton=driver.findElement(By.xpath("/html/body/div[4]/div[1]/div[4]/div[2]/div/div[2]/div[1]/div[2]/div[2]/form/div[5]/input"));
-		WebElement loginButton = driver.findElement(By.cssSelector("body > div.master-wrapper-page > div.master-wrapper-content > div.master-wrapper-main > div.center-2 > div > div.page-body > div.customer-blocks > div.returning-wrapper > div.form-fields > form > div.buttons > input"));
+		WebElement loginButton = driver.findElement(By.cssSelector(
+				"body > div.master-wrapper-page > div.master-wrapper-content > div.master-wrapper-main > div.center-2 > div > div.page-body > div.customer-blocks > div.returning-wrapper > div.form-fields > form > div.buttons > input"));
 		loginButton.click();
 
 	}
@@ -154,14 +162,20 @@ public class SeleniumCommands {
 		WebElement phoneNumberfield = driver.findElement(By.name("phone"));
 		WebElement emailfield = driver.findElement(By.name("userName"));
 
-		WebElement addressfield = driver.findElement(By.xpath("/html/body/div[2]/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[5]/td/form/table/tbody/tr[7]/td[2]/input"));
-		WebElement cityNamefield = driver.findElement(By.xpath("/html/body/div[2]/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[5]/td/form/table/tbody/tr[8]/td[2]/input"));
-		WebElement statenamefield = driver.findElement(By.xpath("/html/body/div[2]/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[5]/td/form/table/tbody/tr[9]/td[2]/input"));
-		WebElement postalcode = driver.findElement(By.xpath("/html/body/div[2]/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[5]/td/form/table/tbody/tr[10]/td[2]/input"));
+		WebElement addressfield = driver.findElement(By.xpath(
+				"/html/body/div[2]/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[5]/td/form/table/tbody/tr[7]/td[2]/input"));
+		WebElement cityNamefield = driver.findElement(By.xpath(
+				"/html/body/div[2]/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[5]/td/form/table/tbody/tr[8]/td[2]/input"));
+		WebElement statenamefield = driver.findElement(By.xpath(
+				"/html/body/div[2]/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[5]/td/form/table/tbody/tr[9]/td[2]/input"));
+		WebElement postalcode = driver.findElement(By.xpath(
+				"/html/body/div[2]/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[5]/td/form/table/tbody/tr[10]/td[2]/input"));
 
 		WebElement userNamefield = driver.findElement(By.cssSelector("#email"));
-		WebElement passwordfield = driver.findElement(By.cssSelector("body > div:nth-child(5) > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(4) > td > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(5) > td > form > table > tbody > tr:nth-child(14) > td:nth-child(2) > input[type=password]"));
-		WebElement confirmPasswordfield = driver.findElement(By.cssSelector("body > div:nth-child(5) > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(4) > td > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(5) > td > form > table > tbody > tr:nth-child(15) > td:nth-child(2) > input[type=password]"));
+		WebElement passwordfield = driver.findElement(By.cssSelector(
+				"body > div:nth-child(5) > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(4) > td > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(5) > td > form > table > tbody > tr:nth-child(14) > td:nth-child(2) > input[type=password]"));
+		WebElement confirmPasswordfield = driver.findElement(By.cssSelector(
+				"body > div:nth-child(5) > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(4) > td > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(5) > td > form > table > tbody > tr:nth-child(15) > td:nth-child(2) > input[type=password]"));
 
 		WebElement submitButton = driver.findElement(By.name("submit"));
 
@@ -181,7 +195,8 @@ public class SeleniumCommands {
 
 		submitButton.click();
 		Thread.sleep(3000);
-		WebElement getTextresult = driver.findElement(By.xpath("/html/body/div[2]/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[3]/td/p[2]/font"));
+		WebElement getTextresult = driver.findElement(By.xpath(
+				"/html/body/div[2]/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[3]/td/p[2]/font"));
 		String actualText = getTextresult.getText();
 		String ExpectedTextresult = "Thank you for registering. You may now sign-in using the user name and password you've just entered.";
 		System.out.println("actualText");
@@ -193,13 +208,20 @@ public class SeleniumCommands {
 		driver.get("https://selenium.obsqurazone.com/form-submit.php");
 		WebElement submitbutton = driver.findElement(By.xpath("//button[@class='btn btn-primary']"));
 		submitbutton.click();
-		WebElement firstnamefieldvalidation = driver.findElement(By.xpath("//input[@id='validationCustom01']//following-sibling::div[1]"));
-		WebElement lastnamefieldvalidation = driver.findElement(By.xpath("//input[@id='validationCustom02']//following-sibling::div[1]"));
-		WebElement usernamefieldvalidation = driver.findElement(By.xpath("//input[@id='validationCustomUsername']/following-sibling::div[@class='invalid-feedback'][1]"));
-		WebElement citynamefieldvalidation = driver.findElement(By.xpath("//input[@id='validationCustom03']//following-sibling::div[1]"));
-		WebElement statenamefieldvalidation = driver.findElement(By.xpath("//input[@id='validationCustom04']//following-sibling::div[1]"));
-		WebElement zipcodefieldvalidation = driver.findElement(By.xpath("//input[@id='validationCustom05']//following-sibling::div[1]"));
-		WebElement checkBoxvalidation = driver.findElement(By.xpath("//input[@class='form-check-input']/following-sibling::div[1]"));
+		WebElement firstnamefieldvalidation = driver
+				.findElement(By.xpath("//input[@id='validationCustom01']//following-sibling::div[1]"));
+		WebElement lastnamefieldvalidation = driver
+				.findElement(By.xpath("//input[@id='validationCustom02']//following-sibling::div[1]"));
+		WebElement usernamefieldvalidation = driver.findElement(By
+				.xpath("//input[@id='validationCustomUsername']/following-sibling::div[@class='invalid-feedback'][1]"));
+		WebElement citynamefieldvalidation = driver
+				.findElement(By.xpath("//input[@id='validationCustom03']//following-sibling::div[1]"));
+		WebElement statenamefieldvalidation = driver
+				.findElement(By.xpath("//input[@id='validationCustom04']//following-sibling::div[1]"));
+		WebElement zipcodefieldvalidation = driver
+				.findElement(By.xpath("//input[@id='validationCustom05']//following-sibling::div[1]"));
+		WebElement checkBoxvalidation = driver
+				.findElement(By.xpath("//input[@class='form-check-input']/following-sibling::div[1]"));
 
 		String actualFirstnameText = firstnamefieldvalidation.getText();
 		String actuallastnameText = lastnamefieldvalidation.getText();
@@ -254,8 +276,10 @@ public class SeleniumCommands {
 		WebElement submitbutton = driver.findElement(By.xpath("//button[@class='btn btn-primary']"));
 		submitbutton.click();
 
-		WebElement statenamefieldvaliadation = driver.findElement(By.xpath("//input[@id='validationCustom04']/following-sibling::div[@class='invalid-feedback']"));
-		WebElement zipcodefieldvaliadation = driver.findElement(By.xpath("//input[@id='validationCustom05']/following-sibling::div[@class='invalid-feedback']"));
+		WebElement statenamefieldvaliadation = driver.findElement(
+				By.xpath("//input[@id='validationCustom04']/following-sibling::div[@class='invalid-feedback']"));
+		WebElement zipcodefieldvaliadation = driver.findElement(
+				By.xpath("//input[@id='validationCustom05']/following-sibling::div[@class='invalid-feedback']"));
 
 		String actualStatenamemessage = statenamefieldvaliadation.getText();
 		String actualZipmessage = zipcodefieldvaliadation.getText();
@@ -510,82 +534,207 @@ public class SeleniumCommands {
 	public void TC024_verifyTextinAframe() {
 		driver.get("https://demoqa.com/frames");
 		List<WebElement> frames = driver.findElements(By.tagName("iframe"));
-		 int noOFframes=frames.size();//using index
-		 System.out.println(noOFframes);
-	    //driver.switchTo().frame(7);
+		int noOFframes = frames.size();// using index
+		System.out.println(noOFframes);
+		// driver.switchTo().frame(7);
 		driver.switchTo().frame("frame1");// using id
-		//WebElement frame = driver.findElement(By.id("frame1"));
-		//driver.switchTo().frame("frame1");
+		// WebElement frame = driver.findElement(By.id("frame1"));
+		// driver.switchTo().frame("frame1");
 		WebElement heading = driver.findElement(By.id("sampleHeading"));
 		String headingText = heading.getText();
 		System.out.println(headingText);
 		// driver.switchTo().parentFrame();
 		driver.switchTo().defaultContent();
-		}
-	@Test
-	public void TC025_verifyRightclick()
-	{
-		
-	driver.get("https://demo.guru99.com/test/simple_context_menu.html");
-	WebElement rightClickbutton=driver.findElement(By.xpath("//span[@class='context-menu-one btn btn-neutral']"));
-	Actions action=new Actions(driver);
-	action.contextClick(rightClickbutton).build().perform();
-	//action.build().perform();
 	}
-	@Test
-	public void TC026_verifyDoubleclick()
-	{
-		
-	driver.get("https://demo.guru99.com/test/simple_context_menu.html");
-	WebElement doubleClickbutton=driver.findElement(By.xpath("//button[text()='Double-Click Me To See Alert']"));
-	Actions action=new Actions(driver);
-	action.doubleClick(doubleClickbutton).build().perform();
-	//action.build().perform();
-	Alert alert=driver.switchTo().alert();
-	alert.accept();
-	}
-	@Test
-	public void TC027_verifyMouseover()
-	{
-		driver.get("https://demoqa.com/menu/");
-		WebElement mainItem1=driver.findElement(By.xpath("//a[@href='#']"));
-		Actions action=new Actions(driver);
-		action.moveToElement(mainItem1).build().perform();
-		action.moveByOffset(40,50).build().perform();
-		}
-	@Test
-	public void TC028_verifyDragandDrop()
-	{
-	driver.get("https://demoqa.com/droppable");
-	WebElement dragmeButton=driver.findElement(By.id("draggable"));
-	WebElement dropmeButton=driver.findElement(By.id("droppable"));
-	Actions action=new Actions(driver);
-	action.dragAndDrop(dragmeButton,dropmeButton).build().perform();
-}
-	@Test
-	public void TC029_verifyDragandDropbyOffset()
-	{
-		driver.get("https://demoqa.com/dragabble");
-		WebElement dragmeButton=driver.findElement(By.xpath("//div[@id='dragBox']"));
-		Actions action=new Actions(driver);
-		action.dragAndDropBy(dragmeButton, 40, 50);
-}
-	@Test
-	public void TC030_verifyDragandDrop()
-	{
-		driver.get("https://selenium.obsqurazone.com/drag-drop.php\r\n");
-		WebElement draggable1field=driver.findElement(By.xpath("//span[text()='Draggable n°1']"));
-		WebElement draggable2field=driver.findElement(By.xpath("//span[text()='Draggable n°2']"));
-		WebElement draggable3field=driver.findElement(By.xpath("//span[text()='Draggable n°3']"));
-		WebElement draggable4field=driver.findElement(By.xpath("//span[text()='Draggable n°4']"));
-		WebElement dropfield=driver.findElement(By.xpath("//div[@id='mydropzone']"));
-		Actions action=new Actions(driver);
-		action.dragAndDrop(draggable1field,dropfield).build().perform();
-		action.dragAndDrop(draggable2field,dropfield).build().perform();
-		action.dragAndDrop(draggable3field,dropfield).build().perform();
-		action.dragAndDrop(draggable4field,dropfield).build().perform();
-	}
-	
-	
-}
 
+	@Test
+	public void TC025_verifyRightclick() {
+
+		driver.get("https://demo.guru99.com/test/simple_context_menu.html");
+		WebElement rightClickbutton = driver.findElement(By.xpath("//span[@class='context-menu-one btn btn-neutral']"));
+		Actions action = new Actions(driver);
+		action.contextClick(rightClickbutton).build().perform();
+		// action.build().perform();
+	}
+
+	@Test
+	public void TC026_verifyDoubleclick() {
+
+		driver.get("https://demo.guru99.com/test/simple_context_menu.html");
+		WebElement doubleClickbutton = driver.findElement(By.xpath("//button[text()='Double-Click Me To See Alert']"));
+		Actions action = new Actions(driver);
+		action.doubleClick(doubleClickbutton).build().perform();
+		// action.build().perform();
+		Alert alert = driver.switchTo().alert();
+		alert.accept();
+	}
+
+	@Test
+	public void TC027_verifyMouseover() {
+		driver.get("https://demoqa.com/menu/");
+		WebElement mainItem1 = driver.findElement(By.xpath("//a[@href='#']"));
+		Actions action = new Actions(driver);
+		action.moveToElement(mainItem1).build().perform();
+		action.moveByOffset(40, 50).build().perform();
+	}
+
+	@Test
+	public void TC028_verifyDragandDrop() {
+		driver.get("https://demoqa.com/droppable");
+		WebElement dragmeButton = driver.findElement(By.id("draggable"));
+		WebElement dropmeButton = driver.findElement(By.id("droppable"));
+		Actions action = new Actions(driver);
+		action.dragAndDrop(dragmeButton, dropmeButton).build().perform();
+	}
+
+	@Test
+	public void TC029_verifyDragandDropbyOffset() {
+		driver.get("https://demoqa.com/dragabble");
+		WebElement dragmeButton = driver.findElement(By.xpath("//div[@id='dragBox']"));
+		Actions action = new Actions(driver);
+		action.dragAndDropBy(dragmeButton, 40, 50);
+	}
+
+	@Test
+	public void TC030_verifyDragandDrop() {
+		driver.get("https://selenium.obsqurazone.com/drag-drop.php");
+		WebElement draggable1field = driver.findElement(By.xpath("//span[text()='Draggable n°1']"));
+		WebElement draggable2field = driver.findElement(By.xpath("//span[text()='Draggable n°2']"));
+		WebElement draggable3field = driver.findElement(By.xpath("//span[text()='Draggable n°3']"));
+		WebElement draggable4field = driver.findElement(By.xpath("//span[text()='Draggable n°4']"));
+		WebElement dropfield = driver.findElement(By.xpath("//div[@id='mydropzone']"));
+		Actions action = new Actions(driver);
+		action.dragAndDrop(draggable1field, dropfield).build().perform();
+		action.dragAndDrop(draggable2field, dropfield).build().perform();
+		action.dragAndDrop(draggable3field, dropfield).build().perform();
+		action.dragAndDrop(draggable4field, dropfield).build().perform();
+	}
+
+	@Test
+	public void TC031_verifyClickholdAndresize() {
+		//driver.get("https://jqueryui.com/resizable/");
+		WebElement frame = driver.findElement(By.xpath("//*[@id='content']/iframe"));
+		driver.switchTo().frame(frame);
+		WebElement reSizebox = driver.findElement(By.xpath("//*[@id='resizable']/div[3]"));
+		Actions action = new Actions(driver);
+		action.clickAndHold(reSizebox).build().perform();
+		action.dragAndDropBy(reSizebox, 300, 100).build().perform();
+		// action.clickAndHold(reSizebox).build().perform();
+	}
+
+	@Test
+	public void TC032_verifyClickholdAndresize1() {
+		driver.get("https://demoqa.com/resizable");
+		WebElement frame = driver.findElement(By.xpath("//div[@id='resizableBoxWithRestriction']']"));
+		driver.switchTo().frame(frame);
+		WebElement reSizebox = driver.findElement(By.xpath("//div[text()='Resizable box, starting at 200x200. Min size is 150x150, max is 500x300.']/following::span[@class='react-resizable-handle react-resizable-handle-se'][1]"));
+		Actions action = new Actions(driver);
+		// action.clickAndHold(reSizebox).build().perform();
+		action.dragAndDropBy(reSizebox, 100, 100).build().perform();
+		action.clickAndHold(reSizebox).build().perform();
+	}
+
+	@Test
+	public void TC033_verifyValuesinDropdown() {
+		driver.get("https://demo.guru99.com/test/newtours/register.php");
+		WebElement countryDropdown = driver.findElement(By.xpath("//select[@name='country']"));
+		List<String> expDropDownlist = new ArrayList<String>();
+		expDropDownlist.add("ALBANIA");
+		expDropDownlist.add("ALGERIA");
+		expDropDownlist.add("AMERICAN SAMOA");
+		expDropDownlist.add("ANDORRA");
+		List<String> actDropDownList = new ArrayList<String>();
+		Select select = new Select(countryDropdown);
+		List<WebElement> dropDownoptions = select.getOptions();
+		for (int i = 0; i < 4; i++) {
+			actDropDownList.add(dropDownoptions.get(i).getText());
+		}
+		System.out.println(actDropDownList);
+		// Assert.assertEquals(actDropDownList, expDropDownlist,"invalid dropdown
+		// options");
+		select.selectByVisibleText("INDIA");
+		// select.selectByIndex(23);
+		select.selectByValue("IRELAND");
+	}
+
+	@Test
+	public void TC034_verifymultiselectDropdown() {
+		driver.get("https://www.softwaretestingmaterial.com/sample-webpage-to-automate/");
+		WebElement multiselectDropDown = driver.findElement(By.xpath("//select[@name='multipleselect[]']"));
+		Select select = new Select(multiselectDropDown);
+		boolean status = select.isMultiple();
+		System.out.println(status);
+		select.selectByVisibleText("Performance Testing");
+		select.selectByVisibleText("Manual Testing");
+		List<WebElement> selectedOptions = select.getAllSelectedOptions();
+		for (int i = 0; i < selectedOptions.size(); i++) {
+			System.out.println(selectedOptions.get(i).getText());
+		}
+		select.deselectAll();
+	}
+
+	@Test
+	public void TC035_verifyfindElementsCommands() {
+		driver.get("https://selenium.obsqurazone.com/radio-button-demo.php");
+		List<WebElement>genders=driver.findElements(By.xpath("//input[@name='student-gender']"));
+		System.out.println(genders);
+		for(int i=0;i<genders.size();i++)//multiple checkbox handling
+		{
+			String gender=genders.get(i).getAttribute("value");
+			System.out.println(gender);
+			if(gender.equals("Female"))
+			{
+				genders.get(i).click();
+			}
+		}
+	}
+	@Test
+	public void TC036_verifyfileUploadinSelenium() 
+	{
+		driver.get("https://demo.guru99.com/test/upload/");
+		WebElement choosefileField=driver.findElement(By.xpath("//input[@id='uploadfile_0']"));
+		choosefileField.sendKeys("C:\\Users\\Vineeth\\Desktop\\selenium\\test.txt");
+		WebElement termsCheckbox=driver.findElement(By.xpath("//input[@id='terms']"));
+		termsCheckbox.click();
+		WebElement submitButton=driver.findElement(By.xpath("//button[@id='submitbutton']"));
+		submitButton.click();
+	}
+	@Test
+	public void TC037_verifyClickandSendkeysUsingjavascriptExecutor() 
+	{
+		driver.get("https://demowebshop.tricentis.com/");
+		JavascriptExecutor js=(JavascriptExecutor) driver;
+		js.executeScript("document.getElementById(\"newsletter-email\").value='abc@gmail.com'");
+		js.executeScript("document.getElementById('newsletter-subscribe-button').click()");
+		}
+	@Test
+	public void TC038_verifyScrolldownOfaWebpage() 
+	{
+		driver.get("https://demo.guru99.com/test/guru99home/");
+		JavascriptExecutor js=(JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,1000)");
+		}
+	@Test
+	public void TC038_verifyScrollintoViewOfaWebelement() 
+	{
+		driver.get("https://demo.guru99.com/test/guru99home/");
+	    WebElement linux=driver.findElement(By.linkText("Linux"));
+		JavascriptExecutor js=(JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView();",linux);
+}
+	@Test
+	public void TC039_verifyScrollintoBottomofthepage()
+	{
+		driver.get("https://demo.guru99.com/test/guru99home/");
+		JavascriptExecutor js=(JavascriptExecutor) driver;
+		js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+	}
+	@Test
+	public void TC040_verifyScrollhorizontal()
+	{
+		driver.get("http://demo.guru99.com/test/guru99home/scrolling.html");
+		WebElement vbScript=driver.findElement(By.linkText("VBScript"));
+		JavascriptExecutor js=(JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView();",vbScript);
+		}
+	}

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="30" total="31" passed="1" failed="0" skipped="0">
+<testng-results ignored="41" total="42" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-03-14T09:15:09 GST" name="Default suite" finished-at="2023-03-14T09:15:18 GST" duration-ms="9405">
+  <suite started-at="2023-03-17T10:04:15 GST" name="Default suite" finished-at="2023-03-17T10:04:23 GST" duration-ms="8154">
     <groups>
     </groups>
-    <test started-at="2023-03-14T09:15:09 GST" name="Default test" finished-at="2023-03-14T09:15:18 GST" duration-ms="9405">
+    <test started-at="2023-03-17T10:04:15 GST" name="Default test" finished-at="2023-03-17T10:04:23 GST" duration-ms="8154">
       <class name="BasicCommands.SeleniumCommands">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:BasicCommands.SeleniumCommands@d9345cd]" started-at="2023-03-14T09:15:09 GST" name="setUp" finished-at="2023-03-14T09:15:12 GST" duration-ms="3004" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:BasicCommands.SeleniumCommands@72e5a8e]" started-at="2023-03-17T10:04:15 GST" name="setUp" finished-at="2023-03-17T10:04:17 GST" duration-ms="2285" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="TC_001_verifyObsquraTitle()[pri:0, instance:BasicCommands.SeleniumCommands@d9345cd]" started-at="2023-03-14T09:15:12 GST" name="TC_001_verifyObsquraTitle" finished-at="2023-03-14T09:15:17 GST" duration-ms="5534" status="PASS">
+        <test-method signature="TC040_verifyScrollhorizontal()[pri:0, instance:BasicCommands.SeleniumCommands@72e5a8e]" started-at="2023-03-17T10:04:17 GST" name="TC040_verifyScrollhorizontal" finished-at="2023-03-17T10:04:23 GST" duration-ms="5839" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_001_verifyObsquraTitle -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:BasicCommands.SeleniumCommands@d9345cd]" started-at="2023-03-14T09:15:17 GST" name="tearDown" finished-at="2023-03-14T09:15:18 GST" duration-ms="828" status="PASS">
+        </test-method> <!-- TC040_verifyScrollhorizontal -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:BasicCommands.SeleniumCommands@72e5a8e]" started-at="2023-03-17T10:04:23 GST" name="tearDown" finished-at="2023-03-17T10:04:23 GST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
