@@ -1,5 +1,11 @@
 package BasicCommands;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.sql.Driver;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -612,7 +618,7 @@ public class SeleniumCommands {
 
 	@Test
 	public void TC031_verifyClickholdAndresize() {
-		//driver.get("https://jqueryui.com/resizable/");
+		// driver.get("https://jqueryui.com/resizable/");
 		WebElement frame = driver.findElement(By.xpath("//*[@id='content']/iframe"));
 		driver.switchTo().frame(frame);
 		WebElement reSizebox = driver.findElement(By.xpath("//*[@id='resizable']/div[3]"));
@@ -627,7 +633,8 @@ public class SeleniumCommands {
 		driver.get("https://demoqa.com/resizable");
 		WebElement frame = driver.findElement(By.xpath("//div[@id='resizableBoxWithRestriction']']"));
 		driver.switchTo().frame(frame);
-		WebElement reSizebox = driver.findElement(By.xpath("//div[text()='Resizable box, starting at 200x200. Min size is 150x150, max is 500x300.']/following::span[@class='react-resizable-handle react-resizable-handle-se'][1]"));
+		WebElement reSizebox = driver.findElement(By.xpath(
+				"//div[text()='Resizable box, starting at 200x200. Min size is 150x150, max is 500x300.']/following::span[@class='react-resizable-handle react-resizable-handle-se'][1]"));
 		Actions action = new Actions(driver);
 		// action.clickAndHold(reSizebox).build().perform();
 		action.dragAndDropBy(reSizebox, 100, 100).build().perform();
@@ -676,65 +683,143 @@ public class SeleniumCommands {
 	@Test
 	public void TC035_verifyfindElementsCommands() {
 		driver.get("https://selenium.obsqurazone.com/radio-button-demo.php");
-		List<WebElement>genders=driver.findElements(By.xpath("//input[@name='student-gender']"));
+		List<WebElement> genders = driver.findElements(By.xpath("//input[@name='student-gender']"));
 		System.out.println(genders);
-		for(int i=0;i<genders.size();i++)//multiple checkbox handling
+		for (int i = 0; i < genders.size(); i++)// multiple checkbox handling
 		{
-			String gender=genders.get(i).getAttribute("value");
+			String gender = genders.get(i).getAttribute("value");
 			System.out.println(gender);
-			if(gender.equals("Female"))
-			{
+			if (gender.equals("Female")) {
 				genders.get(i).click();
 			}
 		}
 	}
+
 	@Test
-	public void TC036_verifyfileUploadinSelenium() 
-	{
+	public void TC036_verifyfileUploadinSelenium() {
 		driver.get("https://demo.guru99.com/test/upload/");
-		WebElement choosefileField=driver.findElement(By.xpath("//input[@id='uploadfile_0']"));
+		WebElement choosefileField = driver.findElement(By.xpath("//input[@id='uploadfile_0']"));
 		choosefileField.sendKeys("C:\\Users\\Vineeth\\Desktop\\selenium\\test.txt");
-		WebElement termsCheckbox=driver.findElement(By.xpath("//input[@id='terms']"));
+		WebElement termsCheckbox = driver.findElement(By.xpath("//input[@id='terms']"));
 		termsCheckbox.click();
-		WebElement submitButton=driver.findElement(By.xpath("//button[@id='submitbutton']"));
+		WebElement submitButton = driver.findElement(By.xpath("//button[@id='submitbutton']"));
 		submitButton.click();
 	}
+
 	@Test
-	public void TC037_verifyClickandSendkeysUsingjavascriptExecutor() 
-	{
+	public void TC037_verifyClickandSendkeysUsingjavascriptExecutor() {
 		driver.get("https://demowebshop.tricentis.com/");
-		JavascriptExecutor js=(JavascriptExecutor) driver;
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("document.getElementById(\"newsletter-email\").value='abc@gmail.com'");
 		js.executeScript("document.getElementById('newsletter-subscribe-button').click()");
-		}
+	}
+
 	@Test
-	public void TC038_verifyScrolldownOfaWebpage() 
-	{
+	public void TC038_verifyScrolldownOfaWebpage() {
 		driver.get("https://demo.guru99.com/test/guru99home/");
-		JavascriptExecutor js=(JavascriptExecutor) driver;
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,1000)");
-		}
+	}
+
 	@Test
-	public void TC038_verifyScrollintoViewOfaWebelement() 
-	{
+	public void TC038_verifyScrollintoViewOfaWebelement() {
 		driver.get("https://demo.guru99.com/test/guru99home/");
-	    WebElement linux=driver.findElement(By.linkText("Linux"));
-		JavascriptExecutor js=(JavascriptExecutor) driver;
-		js.executeScript("arguments[0].scrollIntoView();",linux);
-}
+		WebElement linux = driver.findElement(By.linkText("Linux"));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView();", linux);
+	}
+
 	@Test
-	public void TC039_verifyScrollintoBottomofthepage()
-	{
+	public void TC039_verifyScrollintoBottomofthepage() {
 		driver.get("https://demo.guru99.com/test/guru99home/");
-		JavascriptExecutor js=(JavascriptExecutor) driver;
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
 	}
+
 	@Test
-	public void TC040_verifyScrollhorizontal()
-	{
+	public void TC040_verifyScrollhorizontal() {
 		driver.get("http://demo.guru99.com/test/guru99home/scrolling.html");
-		WebElement vbScript=driver.findElement(By.linkText("VBScript"));
-		JavascriptExecutor js=(JavascriptExecutor) driver;
-		js.executeScript("arguments[0].scrollIntoView();",vbScript);
-		}
+		WebElement vbScript = driver.findElement(By.linkText("VBScript"));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView();", vbScript);
 	}
+
+	@Test
+	public void TC041_verifyTable() throws IOException {
+		driver.get("https://www.w3schools.com/html/html_tables.asp");
+		List<WebElement> rowElements = driver.findElements(By.xpath("//table[@id='customers']//tbody//tr"));
+		List<WebElement> columnElement = driver.findElements(By.xpath("//table[@id='customers']//tbody//tr//td"));
+		List<ArrayList<String>> actGridData = TableUtility.get_Dynamic_TwoDimension_TablElemnts(rowElements,
+				columnElement);
+		List<ArrayList<String>> expGridData = ExcelUtility.excelDataReader("\\src\\test\\resources\\TestData.xlsx",
+				"Table");
+		Assert.assertEquals(actGridData, expGridData, "Invalid data found in table");
+		System.out.print(actGridData);
+	}
+
+	@Test
+	public void TC042_verifyTable() throws IOException {
+		driver.get("https://www.w3schools.com/html/html_tables.asp");
+		List<WebElement> rowElements = driver.findElements(By.xpath("//table[@id='customers']//tbody//tr"));
+		List<WebElement> columnElement = driver.findElements(By.xpath("//table[@id='customers']//tbody//tr//td"));
+		List<ArrayList<String>> actGridData = TableUtility1.get_Dynamic_TwoDimension_TablElemnts(rowElements,
+				columnElement);
+		List<ArrayList<String>> expGridData = ExcelUtility.excelDataReader("\\src\\test\\resources\\TestData.xlsx",
+				"Table");
+		Assert.assertEquals(actGridData, expGridData, "Invalid data found in table");
+		System.out.print(actGridData);
+		for (int i = 0; i < actGridData.size(); i++) {
+			if (actGridData.get(i).get(0).equals("Island Trading"))
+				
+			{
+				for (int j = 1; j < actGridData.get(i).size(); j++) {
+
+				}
+			}
+		}
+
+	}
+	@Test
+	public void TC043_verifyFileUploadUsingRobotclass() throws InterruptedException, AWTException
+	{
+		driver.get("https://www.foundit.in/seeker/registration");
+		StringSelection s=new StringSelection("C:\\Users\\Vineeth\\Desktop\\selenium\\test.txt");
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(s, null);
+		WebElement chooseFilebutton=driver.findElement(By.xpath("//span[text()='Choose CV']"));
+		chooseFilebutton.click();
+		Thread.sleep(2000);
+		Robot r= new Robot();
+		r.keyPress(KeyEvent.VK_ENTER);
+		r.keyRelease(KeyEvent.VK_ENTER);
+		Thread.sleep(2000);
+		r.keyPress(KeyEvent.VK_CONTROL);
+		r.keyPress(KeyEvent.VK_V);
+		r.keyRelease(KeyEvent.VK_CONTROL);
+		r.keyRelease(KeyEvent.VK_V);
+		Thread.sleep(2000);
+		r.keyPress(KeyEvent.VK_ENTER);
+		r.keyRelease(KeyEvent.VK_ENTER);
+		}
+	@Test
+	public void TC043_verifyDynamictable() throws IOException
+	{
+		driver.get("https://selenium.obsqurazone.com/table-sort-search.php");
+        WebElement searchField= driver.findElement(By.xpath("//input[@type='search']"));
+        searchField.sendKeys("Caesar Vance");
+        List<WebElement> rowElements = driver.findElements(By.xpath("//table[@id='dtBasicExample']//tr"));
+        List<WebElement> columnElements = driver.findElements(By.xpath("//table[@id='dtBasicExample']//tr//td"));
+        List<ArrayList<String>> actGridData = TableUtility.get_Dynamic_TwoDimension_ObscuraTablElemnts(rowElements, columnElements);
+        List<ArrayList<String>> expGridData = ExcelUtility.excelDataReader("\\src\\test\\resources\\TestData.xlsx", "ObsTable");
+        Assert.assertEquals(actGridData, expGridData, "Invalid data found in table");
+        System.out.println(actGridData);
+        for (int i = 0; i < actGridData.size(); i++) {
+            if (actGridData.get(i).get(0).equals("Caesar Vance")) {
+                for (int j = 1; j < actGridData.get(i).size(); j++) {
+                    System.out.println(actGridData.get(i).get(j));
+                }
+            }
+        }
+        System.out.println(actGridData);
+    }
+	}
+	
