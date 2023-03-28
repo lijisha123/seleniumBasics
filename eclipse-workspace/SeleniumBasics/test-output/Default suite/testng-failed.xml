@@ -5,8 +5,8 @@
     <classes>
       <class name="BasicCommands.DemoWebShop">
         <methods>
-          <include name="TC005_verifyRegistrationfromExcelsheet"/>
           <include name="tearDown"/>
+          <include name="TC009_verifyLoginwithvalidDatas" invocation-numbers="0 1"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- BasicCommands.DemoWebShop -->

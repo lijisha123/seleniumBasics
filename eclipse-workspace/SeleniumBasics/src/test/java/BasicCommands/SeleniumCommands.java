@@ -7,6 +7,7 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.sql.Driver;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -27,7 +28,10 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -210,7 +214,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC006_verifyEmptyfieldValidation() {
+	public void TC007_verifyEmptyfieldValidation() {
 		driver.get("https://selenium.obsqurazone.com/form-submit.php");
 		WebElement submitbutton = driver.findElement(By.xpath("//button[@class='btn btn-primary']"));
 		submitbutton.click();
@@ -263,7 +267,7 @@ public class SeleniumCommands {
 
 	@Test
 
-	public void TC_007_verifyEmptystateandZipcode() {
+	public void TC_008_verifyEmptystateandZipcode() {
 
 		driver.get("https://selenium.obsqurazone.com/form-submit.php");
 		WebElement firstnamefield = driver.findElement(By.xpath("//input[@id='validationCustom01']"));
@@ -298,7 +302,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC008_verifyObsqueraTestingForm() {
+	public void TC009_verifyObsqueraTestingForm() {
 		driver.get("https://selenium.obsqurazone.com/form-submit.php");
 		WebElement firstnamefield = driver.findElement(By.xpath("//input[@id='validationCustom01']"));
 		WebElement lastnamefield = driver.findElement(By.xpath("//input[@id='validationCustom02']"));
@@ -327,7 +331,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC009_verifyNewlwtterSubscriptionUsingCSSSelector() {
+	public void TC010_verifyNewlwtterSubscriptionUsingCSSSelector() {
 		driver.get("https://demowebshop.tricentis.com");
 		WebElement emailfieldElement = driver.findElement(By.cssSelector("input#newsletter-email"));
 		WebElement subscribeButton = driver.findElement(By.cssSelector("input#newsletter-subscribe-button"));
@@ -337,14 +341,14 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC010_verifyQuitandclose() {
+	public void TC011_verifyQuitandclose() {
 		driver.get("https://demo.guru99.com/popup.php");
 		WebElement clickLink = driver.findElement(By.xpath("//a[text()='Click Here']"));
 		clickLink.click();
 	}
 
 	@Test
-	public void TC011_VerifyInstantdemoRequestform() throws InterruptedException {
+	public void TC012_VerifyInstantdemoRequestform() throws InterruptedException {
 		driver.get("https://phptravels.com/demo/");
 		WebElement firstNamefield = driver.findElement(By.cssSelector("input.first_name.input.mb1"));
 		WebElement lastNamefield = driver.findElement(By.cssSelector("input.last_name.input.mb1"));
@@ -375,12 +379,12 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC012_verifyNavigateto() {
+	public void TC013_verifyNavigateto() {
 		driver.navigate().to("https://demowebshop.tricentis.com");
 	}
 
 	@Test
-	public void TC013_verifyRefresh() {
+	public void TC014_verifyRefresh() {
 		driver.get("https://demowebshop.tricentis.com");
 		WebElement emailfieldElement = driver.findElement(By.xpath("//input[@id='newsletter-email']"));
 		emailfieldElement.sendKeys("abc@hgf.com");
@@ -388,7 +392,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC014_verifyForwardandBackwardNavigation() throws InterruptedException {
+	public void TC015_verifyForwardandBackwardNavigation() throws InterruptedException {
 		driver.get("https://demowebshop.tricentis.com");
 		WebElement loginLink = driver.findElement(By.xpath("//a[text()='Log in']"));
 		loginLink.click();
@@ -398,7 +402,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC015_verifyWebelementCommands() throws InterruptedException {
+	public void TC016_verifyWebelementCommands() throws InterruptedException {
 		driver.get("https://selenium.obsqurazone.com/ajax-form-submit.php");
 		WebElement subjectField = driver.findElement(By.xpath("//input[@id='subject']"));
 		WebElement descriptionField = driver.findElement(By.xpath("//textarea[@id='description']"));
@@ -421,7 +425,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC016_verifyIsdisplayed() {
+	public void TC017_verifyIsdisplayed() {
 		driver.get("https://selenium.obsqurazone.com/ajax-form-submit.php");
 		WebElement subjectField = driver.findElement(By.xpath("//input[@id='subject']"));
 		subjectField.sendKeys("selenium testing");
@@ -431,7 +435,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC017_verifyIsselected() {
+	public void TC018_verifyIsselected() {
 		driver.get("https://selenium.obsqurazone.com/check-box-demo.php");
 		WebElement singleDemocheckBox = driver.findElement(By.xpath("//input[@id='gridCheck']"));
 		boolean statusBeforeclick = singleDemocheckBox.isSelected();
@@ -444,7 +448,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC018_verifyIsenabled() {
+	public void TC019_verifyIsenabled() {
 		driver.get("https://selenium.obsqurazone.com/ajax-form-submit.php");
 		WebElement submitButton = driver.findElement(By.xpath("//input[@class='btn btn-primary']"));
 		boolean status = submitButton.isEnabled();
@@ -464,7 +468,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC019_verifyTheMessageDisplayedInNewTab() {
+	public void TC020_verifyTheMessageDisplayedInNewTab() {
 		driver.get("https://demoqa.com/browser-windows");
 		WebElement newTabbutton = driver.findElement(By.xpath("//button[@id='tabButton']"));
 		boolean newTabbuttonStaus = newTabbutton.isEnabled();
@@ -478,7 +482,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC020_verifyTheMessageDisplayedInNewWindow() {
+	public void TC021_verifyTheMessageDisplayedInNewWindow() {
 		driver.get("https://demoqa.com/browser-windows");
 		String parentWindow = driver.getWindowHandle();
 		System.out.println("Parent window ID=" + parentWindow);
@@ -502,7 +506,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC021_verifySimplealert() {
+	public void TC022_verifySimplealert() {
 		driver.get("https://selenium.obsqurazone.com/javascript-alert.php");
 		WebElement clickMebutton = driver.findElement(By.xpath("//button[@class='btn btn-success']"));
 		clickMebutton.click();
@@ -513,7 +517,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC022_verifyConfirmalert() {
+	public void TC023_verifyConfirmalert() {
 		driver.get("https://selenium.obsqurazone.com/javascript-alert.php");
 		WebElement clickMebutton = driver.findElement(By.xpath("//button[@class='btn btn-warning']"));
 		clickMebutton.click();
@@ -524,7 +528,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC023_verifyPromptalert() throws InterruptedException {
+	public void TC024_verifyPromptalert() throws InterruptedException {
 		driver.get("https://selenium.obsqurazone.com/javascript-alert.php");
 		WebElement clickForpromptButton = driver.findElement(By.xpath("//button[@class='btn btn-danger']"));
 		clickForpromptButton.click();
@@ -537,7 +541,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC024_verifyTextinAframe() {
+	public void TC025_verifyTextinAframe() {
 		driver.get("https://demoqa.com/frames");
 		List<WebElement> frames = driver.findElements(By.tagName("iframe"));
 		int noOFframes = frames.size();// using index
@@ -554,7 +558,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC025_verifyRightclick() {
+	public void TC026_verifyRightclick() {
 
 		driver.get("https://demo.guru99.com/test/simple_context_menu.html");
 		WebElement rightClickbutton = driver.findElement(By.xpath("//span[@class='context-menu-one btn btn-neutral']"));
@@ -564,7 +568,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC026_verifyDoubleclick() {
+	public void TC027_verifyDoubleclick() {
 
 		driver.get("https://demo.guru99.com/test/simple_context_menu.html");
 		WebElement doubleClickbutton = driver.findElement(By.xpath("//button[text()='Double-Click Me To See Alert']"));
@@ -576,7 +580,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC027_verifyMouseover() {
+	public void TC028_verifyMouseover() {
 		driver.get("https://demoqa.com/menu/");
 		WebElement mainItem1 = driver.findElement(By.xpath("//a[@href='#']"));
 		Actions action = new Actions(driver);
@@ -585,7 +589,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC028_verifyDragandDrop() {
+	public void TC029_verifyDragandDrop() {
 		driver.get("https://demoqa.com/droppable");
 		WebElement dragmeButton = driver.findElement(By.id("draggable"));
 		WebElement dropmeButton = driver.findElement(By.id("droppable"));
@@ -594,7 +598,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC029_verifyDragandDropbyOffset() {
+	public void TC030_verifyDragandDropbyOffset() {
 		driver.get("https://demoqa.com/dragabble");
 		WebElement dragmeButton = driver.findElement(By.xpath("//div[@id='dragBox']"));
 		Actions action = new Actions(driver);
@@ -602,7 +606,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC030_verifyDragandDrop() {
+	public void TC031_verifyDragandDrop() {
 		driver.get("https://selenium.obsqurazone.com/drag-drop.php");
 		WebElement draggable1field = driver.findElement(By.xpath("//span[text()='Draggable n°1']"));
 		WebElement draggable2field = driver.findElement(By.xpath("//span[text()='Draggable n°2']"));
@@ -617,7 +621,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC031_verifyClickholdAndresize() {
+	public void TC032_verifyClickholdAndresize() {
 		// driver.get("https://jqueryui.com/resizable/");
 		WebElement frame = driver.findElement(By.xpath("//*[@id='content']/iframe"));
 		driver.switchTo().frame(frame);
@@ -629,7 +633,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC032_verifyClickholdAndresize1() {
+	public void TC033_verifyClickholdAndresize1() {
 		driver.get("https://demoqa.com/resizable");
 		WebElement frame = driver.findElement(By.xpath("//div[@id='resizableBoxWithRestriction']']"));
 		driver.switchTo().frame(frame);
@@ -642,7 +646,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC033_verifyValuesinDropdown() {
+	public void TC034_verifyValuesinDropdown() {
 		driver.get("https://demo.guru99.com/test/newtours/register.php");
 		WebElement countryDropdown = driver.findElement(By.xpath("//select[@name='country']"));
 		List<String> expDropDownlist = new ArrayList<String>();
@@ -665,7 +669,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC034_verifymultiselectDropdown() {
+	public void TC035_verifymultiselectDropdown() {
 		driver.get("https://www.softwaretestingmaterial.com/sample-webpage-to-automate/");
 		WebElement multiselectDropDown = driver.findElement(By.xpath("//select[@name='multipleselect[]']"));
 		Select select = new Select(multiselectDropDown);
@@ -681,7 +685,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC035_verifyfindElementsCommands() {
+	public void TC036_verifyfindElementsCommands() {
 		driver.get("https://selenium.obsqurazone.com/radio-button-demo.php");
 		List<WebElement> genders = driver.findElements(By.xpath("//input[@name='student-gender']"));
 		System.out.println(genders);
@@ -696,7 +700,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC036_verifyfileUploadinSelenium() {
+	public void TC037_verifyfileUploadinSelenium() {
 		driver.get("https://demo.guru99.com/test/upload/");
 		WebElement choosefileField = driver.findElement(By.xpath("//input[@id='uploadfile_0']"));
 		choosefileField.sendKeys("C:\\Users\\Vineeth\\Desktop\\selenium\\test.txt");
@@ -707,7 +711,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC037_verifyClickandSendkeysUsingjavascriptExecutor() {
+	public void TC038_verifyClickandSendkeysUsingjavascriptExecutor() {
 		driver.get("https://demowebshop.tricentis.com/");
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("document.getElementById(\"newsletter-email\").value='abc@gmail.com'");
@@ -715,14 +719,14 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC038_verifyScrolldownOfaWebpage() {
+	public void TC039_verifyScrolldownOfaWebpage() {
 		driver.get("https://demo.guru99.com/test/guru99home/");
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,1000)");
 	}
 
 	@Test
-	public void TC038_verifyScrollintoViewOfaWebelement() {
+	public void TC040_verifyScrollintoViewOfaWebelement() {
 		driver.get("https://demo.guru99.com/test/guru99home/");
 		WebElement linux = driver.findElement(By.linkText("Linux"));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -730,14 +734,14 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC039_verifyScrollintoBottomofthepage() {
+	public void TC041_verifyScrollintoBottomofthepage() {
 		driver.get("https://demo.guru99.com/test/guru99home/");
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
 	}
 
 	@Test
-	public void TC040_verifyScrollhorizontal() {
+	public void TC042_verifyScrollhorizontal() {
 		driver.get("http://demo.guru99.com/test/guru99home/scrolling.html");
 		WebElement vbScript = driver.findElement(By.linkText("VBScript"));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -745,7 +749,7 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC041_verifyTable() throws IOException {
+	public void TC043_verifyTable() throws IOException {
 		driver.get("https://www.w3schools.com/html/html_tables.asp");
 		List<WebElement> rowElements = driver.findElements(By.xpath("//table[@id='customers']//tbody//tr"));
 		List<WebElement> columnElement = driver.findElements(By.xpath("//table[@id='customers']//tbody//tr//td"));
@@ -758,11 +762,11 @@ public class SeleniumCommands {
 	}
 
 	@Test
-	public void TC042_verifyTable() throws IOException {
+	public void TC044_verifyTable() throws IOException {
 		driver.get("https://www.w3schools.com/html/html_tables.asp");
 		List<WebElement> rowElements = driver.findElements(By.xpath("//table[@id='customers']//tbody//tr"));
 		List<WebElement> columnElement = driver.findElements(By.xpath("//table[@id='customers']//tbody//tr//td"));
-		List<ArrayList<String>> actGridData = TableUtility1.get_Dynamic_TwoDimension_TablElemnts(rowElements,
+		List<ArrayList<String>> actGridData = TableUtility.get_Dynamic_TwoDimension_TablElemnts(rowElements,
 				columnElement);
 		List<ArrayList<String>> expGridData = ExcelUtility.excelDataReader("\\src\\test\\resources\\TestData.xlsx",
 				"Table");
@@ -780,7 +784,7 @@ public class SeleniumCommands {
 
 	}
 	@Test
-	public void TC043_verifyFileUploadUsingRobotclass() throws InterruptedException, AWTException
+	public void TC045_verifyFileUploadUsingRobotclass() throws InterruptedException, AWTException
 	{
 		driver.get("https://www.foundit.in/seeker/registration");
 		StringSelection s=new StringSelection("C:\\Users\\Vineeth\\Desktop\\selenium\\test.txt");
@@ -801,7 +805,7 @@ public class SeleniumCommands {
 		r.keyRelease(KeyEvent.VK_ENTER);
 		}
 	@Test
-	public void TC043_verifyDynamictable() throws IOException
+	public void TC046_verifyDynamictable() throws IOException
 	{
 		driver.get("https://selenium.obsqurazone.com/table-sort-search.php");
         WebElement searchField= driver.findElement(By.xpath("//input[@type='search']"));
@@ -821,5 +825,26 @@ public class SeleniumCommands {
         }
         System.out.println(actGridData);
     }
+	@Test
+	public void Tc047_verifyWaitsinSelenium()
+	{
+		driver.get("https://demowebshop.tricentis.com/");
+		/*page load wait*/
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+		/*Implicit wait*/
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		/*explicit wait*/
+		WebElement emailField=driver.findElement(By.xpath("//input[@id='newsletter-email']"));
+		emailField.sendKeys("test123@yop.com");
+		WebElement subsribeButton=driver.findElement(By.xpath("//input[@id='newsletter-subscribe-button']"));
+		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOf(subsribeButton));
+		/*fluentwait*/
+		FluentWait fWait=new FluentWait<WebDriver>(driver);
+		fWait.withTimeout(Duration.ofSeconds(10));
+		fWait.pollingEvery(Duration.ofSeconds(10));
+		fWait.until(ExpectedConditions.visibilityOf(subsribeButton));
+		subsribeButton.click();
+		}
 	}
 	

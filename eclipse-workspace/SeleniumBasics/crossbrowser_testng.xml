@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<test thread-count="5" name="ChromeTest">
+	<parameter name="browser" value="chrome"/>
+	<parameter name="base_url" value="https://demowebshop.tricentis.com"/>
+	<parameter name="uName" value="data123@yop.com"/>
+	<parameter name="password" value="data123"/>
+		<classes>
+			<class name="BasicCommands.DemoWebShop">
+			<methods>
+				<exclude name="TC001_verifyObsquraTitle" />
+				<include name="TC002_verifyDemoshopLoginpage" />
+				<exclude name="TC003_verifyDemoshopRegistrationPage" />
+				<include name="Tc004_verifyTitleexcelRead" />
+				<exclude name="TC005_verifyRegistrationfromExcelsheet" />
+				<exclude name="TC006_verifyDemowebshopFromexcelShettUsingList" />
+				<exclude name="TC007_verifyLoginwithinvalidDatas" />
+				<exclude name="TC008_verifyRegistrationUsingrandongenerator" />
+				<exclude name="TC009_verifyLoginwithvalidDatas" />
+				<exclude name="TC010_verifyLoginwithValidDataUsingParameters" />
+				<exclude name="TC011_verifyRegistrationfromExcelSheetAndmailAsRandomgenerator" />
+
+			</methods>
+			</class>
+		</classes>
+	</test> <!-- Test -->
+	<test thread-count="5" name="EdgeTest">
+	<parameter name="browser" value="edge"/>
+	<parameter name="base_url" value="https://demowebshop.tricentis.com"/>
+	<parameter name="uName" value="data123@yop.com"/>
+	<parameter name="password" value="data123"/>
+		<classes>
+			<class name="BasicCommands.DemoWebShop">
+			<methods>
+				<exclude name="TC001_verifyObsquraTitle" />
+				<exclude name="TC002_verifyDemoshopLoginpage" />
+				<exclude name="TC003_verifyDemoshopRegistrationPage" />
+				<exclude name="Tc004_verifyTitleexcelRead" />
+				<exclude name="TC005_verifyRegistrationfromExcelsheet" />
+				<exclude name="TC006_verifyDemowebshopFromexcelShettUsingList" />
+				<include name="TC007_verifyLoginwithinvalidDatas" />
+				<exclude name="TC008_verifyRegistrationUsingrandongenerator" />
+				<exclude name="TC009_verifyLoginwithvalidDatas" />
+				<exclude name="TC010_verifyLoginwithValidDataUsingParameters" />
+				<exclude name="TC011_verifyRegistrationfromExcelSheetAndmailAsRandomgenerator" />
+
+			</methods>
+			</class>
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

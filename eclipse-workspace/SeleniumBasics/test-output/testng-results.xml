@@ -1,95 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="4" total="5" passed="0" failed="1" skipped="0">
+<testng-results ignored="19" total="24" passed="5" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-03-23T19:37:29 GST" name="Default suite" finished-at="2023-03-23T19:37:34 GST" duration-ms="4979">
+  <suite started-at="2023-03-28T19:24:34 GST" name="Suite" finished-at="2023-03-28T19:25:07 GST" duration-ms="33264">
     <groups>
     </groups>
-    <test started-at="2023-03-23T19:37:29 GST" name="Default test" finished-at="2023-03-23T19:37:34 GST" duration-ms="4979">
+    <test started-at="2023-03-28T19:24:34 GST" name="ChromeTest" finished-at="2023-03-28T19:24:47 GST" duration-ms="13274">
       <class name="BasicCommands.DemoWebShop">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:BasicCommands.DemoWebShop@4c1909a3]" started-at="2023-03-23T19:37:29 GST" name="setUp" finished-at="2023-03-23T19:37:31 GST" duration-ms="1638" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="TC005_verifyRegistrationfromExcelsheet()[pri:0, instance:BasicCommands.DemoWebShop@4c1909a3]" started-at="2023-03-23T19:37:31 GST" name="TC005_verifyRegistrationfromExcelsheet" finished-at="2023-03-23T19:37:34 GST" duration-ms="3170" status="FAIL">
-          <exception class="org.openqa.selenium.NoSuchElementException">
-            <message>
-              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//div[@class='header-links']//a[@class='account']"}
-  (Session info: chrome=111.0.5563.66)
-For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
-Build info: version: '4.8.0', revision: '267030adea'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.2'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [0d3494b7673349356db0638cca3538db, findElement {using=xpath, value=//div[@class='header-links']//a[@class='account']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 111.0.5563.66, chrome: {chromedriverVersion: 111.0.5563.64 (c710e93d5b63..., userDataDir: C:\Users\Vineeth\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:54203}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:54203/devtoo..., se:cdpVersion: 111.0.5563.66, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 0d3494b7673349356db0638cca3538db]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@class='header-links']//a[@class='account']"}
-  (Session info: chrome=111.0.5563.66)
-For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
-Build info: version: '4.8.0', revision: '267030adea'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.2'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [0d3494b7673349356db0638cca3538db, findElement {using=xpath, value=//div[@class='header-links']//a[@class='account']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 111.0.5563.66, chrome: {chromedriverVersion: 111.0.5563.64 (c710e93d5b63..., userDataDir: C:\Users\Vineeth\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:54203}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:54203/devtoo..., se:cdpVersion: 111.0.5563.66, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 0d3494b7673349356db0638cca3538db
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
-at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
-at BasicCommands.DemoWebShop.TC005_verifyRegistrationfromExcelsheet(DemoWebShop.java:188)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:829)
-at org.testng.TestRunner.run(TestRunner.java:602)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:431)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:391)
-at org.testng.SuiteRunner.run(SuiteRunner.java:330)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
-at org.testng.TestNG.runSuites(TestNG.java:1099)
-at org.testng.TestNG.run(TestNG.java:1067)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- TC005_verifyRegistrationfromExcelsheet -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:BasicCommands.DemoWebShop@4c1909a3]" started-at="2023-03-23T19:37:34 GST" name="tearDown" finished-at="2023-03-23T19:37:34 GST" duration-ms="133" status="PASS">
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:BasicCommands.DemoWebShop@1c7696c6]" started-at="2023-03-28T19:24:34 GST" name="setUp" finished-at="2023-03-28T19:24:40 GST" duration-ms="5576" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC005_verifyRegistrationfromExcelsheet status=FAILURE method=DemoWebShop.TC005_verifyRegistrationfromExcelsheet()[pri:0, instance:BasicCommands.DemoWebShop@4c1909a3] output={null}]]]>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[https://demowebshop.tricentis.com]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="TC002_verifyDemoshopLoginpage()[pri:0, instance:BasicCommands.DemoWebShop@1c7696c6]" started-at="2023-03-28T19:24:40 GST" name="TC002_verifyDemoshopLoginpage" finished-at="2023-03-28T19:24:41 GST" duration-ms="1770" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC002_verifyDemoshopLoginpage -->
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:BasicCommands.DemoWebShop@1c7696c6]" started-at="2023-03-28T19:24:41 GST" name="tearDown" finished-at="2023-03-28T19:24:42 GST" duration-ms="325" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC002_verifyDemoshopLoginpage status=SUCCESS method=DemoWebShop.TC002_verifyDemoshopLoginpage()[pri:0, instance:BasicCommands.DemoWebShop@1c7696c6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:BasicCommands.DemoWebShop@1c7696c6]" started-at="2023-03-28T19:24:42 GST" name="setUp" finished-at="2023-03-28T19:24:46 GST" duration-ms="4116" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[https://demowebshop.tricentis.com]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="Tc004_verifyTitleexcelRead()[pri:0, instance:BasicCommands.DemoWebShop@1c7696c6]" started-at="2023-03-28T19:24:46 GST" name="Tc004_verifyTitleexcelRead" finished-at="2023-03-28T19:24:47 GST" duration-ms="1056" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Tc004_verifyTitleexcelRead -->
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:BasicCommands.DemoWebShop@1c7696c6]" started-at="2023-03-28T19:24:47 GST" name="tearDown" finished-at="2023-03-28T19:24:47 GST" duration-ms="282" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=Tc004_verifyTitleexcelRead status=SUCCESS method=DemoWebShop.Tc004_verifyTitleexcelRead()[pri:0, instance:BasicCommands.DemoWebShop@1c7696c6] output={null}]]]>
               </value>
             </param>
           </params>
@@ -97,6 +70,139 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- BasicCommands.DemoWebShop -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- ChromeTest -->
+    <test started-at="2023-03-28T19:24:47 GST" name="EdgeTest" finished-at="2023-03-28T19:25:07 GST" duration-ms="19951">
+      <class name="BasicCommands.DemoWebShop">
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:BasicCommands.DemoWebShop@2767e23c]" started-at="2023-03-28T19:24:47 GST" name="setUp" finished-at="2023-03-28T19:24:54 GST" duration-ms="6421" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[edge]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[https://demowebshop.tricentis.com]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="TC007_verifyLoginwithinvalidDatas(java.lang.String,java.lang.String)[pri:0, instance:BasicCommands.DemoWebShop@2767e23c]" started-at="2023-03-28T19:24:54 GST" name="TC007_verifyLoginwithinvalidDatas" data-provider="InvalidCredentials" finished-at="2023-03-28T19:24:55 GST" duration-ms="1320" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[test123@test.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[123456]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC007_verifyLoginwithinvalidDatas -->
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:BasicCommands.DemoWebShop@2767e23c]" started-at="2023-03-28T19:24:55 GST" name="tearDown" finished-at="2023-03-28T19:24:55 GST" duration-ms="351" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC007_verifyLoginwithinvalidDatas status=SUCCESS method=DemoWebShop.TC007_verifyLoginwithinvalidDatas(java.lang.String,java.lang.String)[pri:0, instance:BasicCommands.DemoWebShop@2767e23c] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:BasicCommands.DemoWebShop@2767e23c]" started-at="2023-03-28T19:24:55 GST" name="setUp" finished-at="2023-03-28T19:24:59 GST" duration-ms="4005" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[edge]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[https://demowebshop.tricentis.com]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="TC007_verifyLoginwithinvalidDatas(java.lang.String,java.lang.String)[pri:0, instance:BasicCommands.DemoWebShop@2767e23c]" started-at="2023-03-28T19:24:59 GST" name="TC007_verifyLoginwithinvalidDatas" data-provider="InvalidCredentials" finished-at="2023-03-28T19:25:01 GST" duration-ms="1297" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[test@yop.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[12345]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC007_verifyLoginwithinvalidDatas -->
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:BasicCommands.DemoWebShop@2767e23c]" started-at="2023-03-28T19:25:01 GST" name="tearDown" finished-at="2023-03-28T19:25:01 GST" duration-ms="412" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC007_verifyLoginwithinvalidDatas status=SUCCESS method=DemoWebShop.TC007_verifyLoginwithinvalidDatas(java.lang.String,java.lang.String)[pri:0, instance:BasicCommands.DemoWebShop@2767e23c] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:BasicCommands.DemoWebShop@2767e23c]" started-at="2023-03-28T19:25:01 GST" name="setUp" finished-at="2023-03-28T19:25:06 GST" duration-ms="4445" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[edge]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[https://demowebshop.tricentis.com]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="TC007_verifyLoginwithinvalidDatas(java.lang.String,java.lang.String)[pri:0, instance:BasicCommands.DemoWebShop@2767e23c]" started-at="2023-03-28T19:25:06 GST" name="TC007_verifyLoginwithinvalidDatas" data-provider="InvalidCredentials" finished-at="2023-03-28T19:25:07 GST" duration-ms="1314" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[test123@yop.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[123456]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC007_verifyLoginwithinvalidDatas -->
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:BasicCommands.DemoWebShop@2767e23c]" started-at="2023-03-28T19:25:07 GST" name="tearDown" finished-at="2023-03-28T19:25:07 GST" duration-ms="372" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC007_verifyLoginwithinvalidDatas status=SUCCESS method=DemoWebShop.TC007_verifyLoginwithinvalidDatas(java.lang.String,java.lang.String)[pri:0, instance:BasicCommands.DemoWebShop@2767e23c] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- BasicCommands.DemoWebShop -->
+    </test> <!-- EdgeTest -->
+  </suite> <!-- Suite -->
 </testng-results>
